@@ -25,6 +25,11 @@ class ISBN_test < Minitest::Test
 	  assert_equal(false, checkdigit_contains_X("123-362-781"))
 	end
 	
+	def test_for_only_numeric_characters
+		assert_equal(false, only_numeric_characters([1,2,3,4,5,6,7,8,9,10]))
+		assert_equal(true, only_numeric_characters(["a","b","c","d","e",6,7,8,9,"z"]))
+	end
+	
 	def test_for_ten_character_math
 	  assert_equal(true, ten_character_math([7,4,2,1,3,9,4,7,6,1]))
 	  assert_equal(true, ten_character_math([1,2,3,4,3,6,7,8,8,2]))

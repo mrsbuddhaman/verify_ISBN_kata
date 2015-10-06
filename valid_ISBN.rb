@@ -18,6 +18,16 @@ def checkdigit_contains_X(number)
 	   number_array[9] == 10
 end
 
+def only_numeric_characters(number)
+    n = number.join("")
+    if n =~ /\D/
+       return true
+    else
+       return false
+    end
+end 
+	 
+
 def ten_character_math(any_array)
  	sum = 0
  		if any_array.count == 10
