@@ -9,7 +9,6 @@ def valid_ISBN(number)
 		number
 		end
 		remove_extra_characters(number)
-		number.length == 10 || number.length == 13
 end
 
 def remove_extra_characters(number)
@@ -23,29 +22,30 @@ end
 def character_length(number)
     @number_array = number    
 	if
-      @number_array.length == 10
+       @number_array.length == 10
        checkdigit_contains_X(@number_array)
         if only_numeric_characters(@new_number) == true
-        @output = false    
+         @output = false    
         else ten_character_math(@new_number)
         end
     elsif
-      @number_array.length == 13
-        if only_numeric_characters(@number_array) == true
-        @output = false
+        @number_array.length == 13
+         if only_numeric_characters(@number_array) == true
+          @output = false
         else thirteen_character_math(@number_array)
         end
     else
-      @output =  false
+        @output =  false
     end 
 end
+
 def checkdigit_contains_X(number)
 	
 		if number[9] == "X" || number[9] == "x"
-		  number[9] = 10
+		 number[9] = 10
 		end
-	   @new_number = number
-	   number[9] == 10
+	     @new_number = number
+	     number[9] == 10
 	   
 end
 
@@ -63,19 +63,19 @@ def ten_character_math(any_array)
 	array = []
 	  any_array.each do |value|
       array << value.to_i
-    end
+      end
  	sum = 0
  		
-		  array.each_with_index do |value, index_position|
+	  array.each_with_index do |value, index_position|
  		  break if index_position == 9
 		  sum += value * (index_position + 1)
-		end
+	  end
 		check_digit = sum % 11
-		if array[9] == check_digit
+		 if array[9] == check_digit
           @output = true
-        else
+         else
           @output = false
-        end 
+         end 
 		
 end
 
@@ -83,13 +83,13 @@ end
 def thirteen_character_math(any_array)
 	array = []
 	  any_array.each do |value|
-      array << value.to_i
-    end
+       array << value.to_i
+      end
  	sum = 0
 	check_digit = 0
 		
 	
-		array.each_with_index do |value, index_position|
+	array.each_with_index do |value, index_position|
 		
 		break if index_position == 12
 		
@@ -98,7 +98,7 @@ def thirteen_character_math(any_array)
 			else
 			  sum += value * 3
 			end
-		end	
+	end	
 			sum = sum % 10
 			check_digit = 10 - sum
 			
@@ -110,6 +110,5 @@ def thirteen_character_math(any_array)
         else
             @output = false
         end 	
-		
-	end
+end
 		
