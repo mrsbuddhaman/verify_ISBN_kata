@@ -1,3 +1,5 @@
+# Input a string to check for a valid isbn by returning true if it is.
+
 def isbn_valid?(any_string)
     no_dashes_spaces = remove_dashes_spaces(any_string)
 	no_dashes_spaces_array = no_dashes_spaces.split("")
@@ -25,7 +27,7 @@ def isbn_valid?(any_string)
 		
 end
 
-
+# input any string and returns a string with the spaces and dashes removed
 def remove_dashes_spaces (isbn_number)
 	disallowed_characters = ["-", " "]
 	disallowed_characters.each do |c|
@@ -34,15 +36,19 @@ def remove_dashes_spaces (isbn_number)
 		isbn_number
 end
 
+# input an array of strings and check for x at position 9 and replace x with 10
 def checkdigit_contains_X(number)
 	
 		if number[9] == "X" || number[9] == "x"
 		 number[9] = "10"
-		end
-	     number
+	    end
+		number
+		
+	     
 	   
 end
 
+# input an array of strings and verify each is a single or double digit returning true or false
 def only_numeric_characters(any_array)
 	any_array.each do |v|
 	  m =/\d/.match(v)
@@ -63,15 +69,15 @@ def remove_extra_characters(number_array)
 	number_array
 end
 
+# input array of strings, containing digits only, convert to array of integers, perform math for 10 digit isbn, returning true or false
 def ten_character_math(any_array)
-	new_array = []
-	  any_array.each do |value|
-    new_array<<value.to_i
-      end
+	any_array.collect! {|n| n.to_i}
+
+      
 	
  	sum = 0
  		
-	 new_array.each_with_index do |value, index_position|
+	 any_array.each_with_index do |value, index_position|
  		  break if index_position == 9
 		  sum += value * (index_position + 1)
 	  end
@@ -85,17 +91,15 @@ def ten_character_math(any_array)
 
 	end
 	
+# input array of strings, containing digits only, convert to array of integers, perform math for 13 digit isbn, returning true or false	
 def thirteen_character_math(any_array)
-	new_array = []
-	  any_array.each do |value|
-	new_array<<value.to_i  
-      end
+	any_array.collect! {|n| n.to_i}
 	  
  	sum = 0
 	check_digit = 0
 		
 	
-	new_array.each_with_index do |value, index_position|
+	any_array.each_with_index do |value, index_position|
 		
 		break if index_position == 12
 		
